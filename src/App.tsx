@@ -1,24 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+const [recipeFound, setRecipeFound] = useState([]);
+const [recipeSearch, setRecipeSearch] = useState('');
+
+const searchForRecipes = async (query: string): Promise<any> => {
+  const result = await fetch(`http://www.recipepuppy.com/api/?search=${query}`);
+  return(await result.json()).result;
+};
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
     </div>
   );
 }
